@@ -1,0 +1,32 @@
+﻿@using CURSO01.Clases
+@model IEnumerable<PersonaCLS>;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Sexo</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (PersonaCLS oPersona in Model)
+        {
+        <tr>
+            <td>@oPersona.iidpersona</td>
+            <td>@oPersona.nombreCompleto</td>
+            <td>@oPersona.email</td>
+            <td>@oPersona.nombreSexo</td>
+        </tr>
+        }
+    </tbody>
+
+</table>

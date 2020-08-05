@@ -1,0 +1,84 @@
+﻿@model HospitalWeb.Clases.EspecialidadCLS
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>EspecialidadCLS</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" id="frmWeb">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="iidespeciadlidad" class="control-label"></label>
+                <input asp-for="iidespeciadlidad" class="form-control" />
+                <span asp-validation-for="iidespeciadlidad" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="nombre" class="control-label"></label>
+                <input asp-for="nombre" class="form-control" />
+                <span asp-validation-for="nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="descripcion" class="control-label"></label>
+                <input asp-for="descripcion" class="form-control" />
+                <span asp-validation-for="descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="button" onclick="Guardar()"   value ="Create" class="btn btn-primary" />
+              
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+<script>
+
+    function Guardar() {
+
+        //document.getElementById("idEspecialidad").value = id;
+        //codigo de pop up
+
+        //Validar()
+
+        Swal.fire({
+            title: "Desea agregar el registro?",
+            text: "Desea agregar la informacion en la base de datos",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si!'
+        }).then((result) => {
+            if (result.value) {
+                //enviar a base de datos
+                var frmWeb = document.getElementById("frmWeb");
+                frmWeb.submit();
+
+
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Cambios guardados exitosamente!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+
+            }
+        })
+
+
+    }
+</script>

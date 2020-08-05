@@ -1,0 +1,59 @@
+﻿@model IEnumerable<HospitalWeb.Clases.PersonaCLS>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Persona</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Nuevo</a>
+</p>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.iidPersona)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombreCompleto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombreSexo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.iidPersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreSexo)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+
+                <a href="/Persona/Edit/@item.iidPersona" class="fa fa-refresh btn btn-primary"></a>
+
+                <i class="fa fa-trash-o btn btn-danger" onclick="Eliminar(@item.iidPersona)"></i>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<HospitalWeb.Clases.SedeCLS>
+
+@{
+    ViewData["Title"] = "Index";
+    var filtro = ViewBag.Filtro;
+}
+
+<h1>Sede</h1>
+
+<p>
+    <a  class="btn btn-primary" asp-action="Create">Create New</a>
+</p>
+
+<form asp-controller="Sede" asp-action="Index" method="post" class="mb-2" id="frmEnviar">
+    <label>Ingrese nombre Sede:</label>
+    <input type="text" class="form form-control" 
+           name="nombreSede" id="FiltroSede" value="@filtro" onkeyup="Buscar()"/>
+
+</form>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.iidSede)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombreSede)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.direccion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.iidSede)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreSede)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.direccion)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+
+                <a href="/Sede/Edit/@item.iidSede" class="fa fa-refresh btn btn-primary"></a>
+
+                <i class="fa fa-trash-o btn btn-danger" onclick="Eliminar(@item.iidSede)"></i>
+
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+<script>
+    function Buscar() {
+
+        document.getElementById("frmEnviar").submit();
+    }
+    //window.onload = function () {
+    //    document.getElementById("FiltroSede").focus();
+    //}; 
+
+</script>

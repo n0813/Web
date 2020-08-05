@@ -1,0 +1,76 @@
+﻿@using CURSO01.Clases;
+@model IEnumerable<EspecialidadCLS>
+
+@{
+    ViewData["Title"] = "Index";
+    string nombreEspecialidad = ViewBag.nombreEspecialidad;
+
+}
+
+<h1>Especialidad</h1>
+
+<a asp-action="Agregar" asp-controller="Especialidad">
+    Agregar
+</a>
+
+<form asp-controller="Especialidad" asp-action="index" method="post" class="mb-2"
+      style="display:grid;grid-template-columns:1fr 2fr 1fr 1fr" id="frm-formulario">
+
+    <label>Ingrese el nombre especialidad</label>
+    <input type="text" class="form form-control" name="nombre" value="@nombreEspecialidad" id="nombre" />
+    <input type="submit" value="Enviar" class="btn btn-info" />
+
+    <input type="button" value="Limpiar" class="btn btn-danger" onclick="Limpiar()" />
+</form>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(x => x.iidespeciadlidad)</th>
+            <th>@Html.DisplayNameFor(x => x.nombre)</th>
+            <th>@Html.DisplayNameFor(x => x.descripcion)</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (EspecialidadCLS oEspecialidad in Model)
+        {
+            <tr>
+                <td>@oEspecialidad.iidespeciadlidad</td>
+                <td>@oEspecialidad.nombre</td>
+                <td>@oEspecialidad.descripcion</td>
+                <td>
+                    <i class="fa fa-trash-o btn btn-danger"
+                       onclick="EliminarEspecialidad(@oEspecialidad.iidespeciadlidad)">
+
+                    </i>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+
+<form  method="post" asp-action="eliminar  ">
+    <input type="text" name="iidespecialidad" value="" id="txtIdEspecialidad" />
+
+</form>
+
+
+
+<script>
+    function Limpiar() {
+        document.getElementById("nombre").value = "";
+        document.getElementById("frm-formulario").submit();
+    }
+
+    function EliminarEspecialidad(idEspecialidad) {
+        document.getElementById("txtIdEspecialidad").value = idEspecialidad;
+
+
+    }
+</script>
+

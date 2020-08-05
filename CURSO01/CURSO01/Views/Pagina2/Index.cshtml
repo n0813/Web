@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CURSO01.Clases.PaginaCLS>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Pagina2</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.iidPagina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.mensaje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.accion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.controlador)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.iidPagina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mensaje)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.accion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.controlador)
+            </td>
+            <td>
+
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+
+                @Html.ActionLink("Delete", "Delete", new { id = item.iidPagina })
+
+                @*<a asp-action="Delete" >
+           onclick="EliminarPagina2(@item.iidPagina)">
+               <i class="fa fa-trash-o btn btn-danger"></i>
+                   @Html.ActionLink("Delete", "Delete", new {id=item.iidPagina})
+        </a>*@
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<form asp-action="Delete" method="delete">
+    <input type="text" name="iidpagina" value=""  id="txtIdPagina"/>/>
+
+</form>
+
+
+
+<script>
+    function EliminarPagina2(id) {
+        //alert(id);
+        document.getElementById("txtIdPagina").value = iidpagina;
+    }
+</script>

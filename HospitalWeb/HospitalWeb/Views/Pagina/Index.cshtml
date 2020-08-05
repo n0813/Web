@@ -1,0 +1,58 @@
+﻿@model IEnumerable<HospitalWeb.Clases.PaginaCLS>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Pagina</h1>
+
+<p>
+    <a  class="btn btn-primary"  asp-action="Create">Nuevo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.iiPagina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.mensaje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.accion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.controller)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.iiPagina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mensaje)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.accion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.controller)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+
+                <a href="/Pagina/Edit/@item.iiPagina" class="fa fa-refresh btn btn-primary"></a>
+
+                <i class="fa fa-trash-o btn btn-danger" onclick="Eliminar(@item.iiPagina)"></i>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

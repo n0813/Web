@@ -1,0 +1,62 @@
+﻿@model IEnumerable<CURSO01.Clases.SedeCLS>
+
+@{
+    ViewData["Title"] = "Index";
+    string nombreSede = ViewBag.nombreSede;
+
+}
+
+<h1>Index</h1>
+
+
+<form id="frmEnviar" asp-controller="Sede" asp-action="index" method="post"
+      class="mb-2">
+
+    <label>Nombre Sede</label>
+    <input type="text" name="nombreSede" class="form form-control" onkeyup="Buscar()" value="@nombreSede" />
+
+</form>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.iidSede)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombreSede)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.direccion)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.iidSede)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreSede)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.direccion)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+<script>
+    function Limpiar() {
+        
+        document.getElementById("frmEnviar").submit();
+    }
+</script>

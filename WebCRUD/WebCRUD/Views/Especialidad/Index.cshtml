@@ -1,0 +1,194 @@
+﻿@using WebCRUD.Models;
+@model IEnumerable<EspecialidadCLS>
+
+@{
+    ViewData["Title"] = "Especialidad";
+    string nombreEspecialidad = ViewBag.nombreEspecialidad;
+}
+
+<h1>Especialidad</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Agregar">
+            <i class="fa fa-plus"></i>
+            Agregar
+        </a>
+
+    <button class@*="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <i class="fa fa-plus"></i>
+        Agregar
+    </button>*@
+
+</p>
+
+
+<form asp-controller="Especialidad" asp-action="index" method="post" class="mb-2"
+      style="display:grid;grid-template-columns:1fr 2fr 1fr 1fr" id="frm-formulario">
+
+    <label>Ingrese el nombre especialidad</label>
+    <input type="text" class="form form-control" name="nombre" value="@nombreEspecialidad" id="nombre" />
+
+    <div>
+
+        <input type="submit" value="Enviar" class="btn btn-info" />
+        <input type="button" value="Limpiar" class="btn btn-danger" onclick="Limpiar()" />
+    </div>
+
+</form>
+
+<table class="table" id="myTable">
+    <a class="btn btn-primary" asp-action="exportarExcel" asp-controller="Especialidad">
+        Exportar Excel
+    </a>
+
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(x => x.iidespeciadlidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(x => x.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(x => x.descripcion)
+            </th>
+            <th>Operaciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (EspecialidadCLS item in Model)
+        {
+            <tr>
+                <td>
+                    @item.iidespeciadlidad
+                </td>
+                <td>
+                    @item.nombre
+                </td>
+                <td>
+                    @item.descripcion
+                </td>
+                <td>
+                    @*@Html.ActionLink("Modificar", "Modificar", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Detalle", "Detalle", new { /* id=item.PrimaryKey */ }) |*@
+
+                    <i class="fa fa-trash-o btn btn-danger"
+                       onclick="EliminarEspecialidad(@item.iidespeciadlidad)"></i>
+
+
+                    <a class="fa fa-pencil-square-o btn btn-primary" asp-action="Modificar"
+                       asp-controller="Especialidad" asp-route-id="@item.iidespeciadlidad"></a>
+
+
+                    @*@Html.ActionLink("Eliminar", "Eliminar", new { /* id=item.PrimaryKey */ })*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<form asp-action="Eliminar" asp-controller="Especialidad" method="post" id="frmEliminar">
+    <input type="hidden" id="txtIdEspecialidad" name="iidespecialidad" />
+</form>
+
+
+
+
+<script>
+
+    window.onload = function () {
+        $(document).ready(function () {
+            //$('#myTable').DataTable();
+            $('#myTable').dataTable({
+                "language": {
+                    "url": idioma_espanol
+                }
+            });
+
+            var idioma_espanol = {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "No se encontraron resultados",
+                "sEmptyTable": "Ningún dato disponible en esta tabla",
+                "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                },
+                "buttons": {
+                    "copy": "Copiar",
+                    "colvis": "Visibilidad"
+                }
+            }
+        });
+    }
+
+    function Limpiar() {
+        document.getElementById("nombre").value = "";
+        document.getElementById("frm-formulario").submit();
+    }
+
+    function EliminarEspecialidad(idEspecialidad) {
+        document.getElementById("txtIdEspecialidad").value = idEspecialidad;
+
+        Swal.fire({
+            title: "Desea eliminar el registro?",
+            text: "Desea eliminar la informacion en la base de datos",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si!'
+        }).then((result) => {
+            if (result.value) {
+                //enviar a base de datos
+                var frmEliminar = document.getElementById("frmEliminar");
+                frmEliminar.submit();
+            }
+        })
+
+    }
+
+    //function Guardar() {
+
+    //}
+
+</script>
+
+
+<!-- Modal -->
+@*<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label> ID Especialidad</label>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>*@

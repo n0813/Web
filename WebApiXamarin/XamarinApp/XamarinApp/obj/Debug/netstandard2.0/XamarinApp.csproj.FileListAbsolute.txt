@@ -1,0 +1,14 @@
+C:\Users\Vanessa\Documents\Visual Studio 2019\Web\WebApiXamarin\XamarinApp\XamarinApp\obj\Debug\netstandard2.0\XamarinApp.csprojAssemblyReference.cache
+C:\Users\Vanessa\Documents\Visual Studio 2019\Web\WebApiXamarin\XamarinApp\XamarinApp\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\Vanessa\Documents\Visual Studio 2019\Web\WebApiXamarin\XamarinApp\XamarinApp\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\Vanessa\Documents\Visual Studio 2019\Web\WebApiXamarin\XamarinApp\XamarinApp\obj\Debug\netstandard2.0\XamarinApp.AssemblyInfoInputs.cache
+C:\Users\Vanessa\Documents\Visual Studio 2019\Web\WebApiXamarin\XamarinApp\XamarinApp\obj\Debug\netstandard2.0\XamarinApp.AssemblyInfo.cs
+C:\Users\Vanessa\Documents\Visual Studio 2019\Web\WebApiXamarin\XamarinApp\XamarinApp\bin\Debug\netstandard2.0\XamarinApp.deps.json
+C:\Users\Vanessa\Documents\Visual Studio 2019\Web\WebApiXamarin\XamarinApp\XamarinApp\bin\Debug\netstandard2.0\XamarinApp.dll
+C:\Users\Vanessa\Documents\Visual Studio 2019\Web\WebApiXamarin\XamarinApp\XamarinApp\bin\Debug\netstandard2.0\ref\XamarinApp.dll
+C:\Users\Vanessa\Documents\Visual Studio 2019\Web\WebApiXamarin\XamarinApp\XamarinApp\bin\Debug\netstandard2.0\XamarinApp.pdb
+C:\Users\Vanessa\Documents\Visual Studio 2019\Web\WebApiXamarin\XamarinApp\XamarinApp\obj\Debug\netstandard2.0\XamarinApp.dll
+C:\Users\Vanessa\Documents\Visual Studio 2019\Web\WebApiXamarin\XamarinApp\XamarinApp\obj\Debug\netstandard2.0\ref\XamarinApp.dll
+C:\Users\Vanessa\Documents\Visual Studio 2019\Web\WebApiXamarin\XamarinApp\XamarinApp\obj\Debug\netstandard2.0\XamarinApp.pdb
+C:\Users\Vanessa\Documents\Visual Studio 2019\Web\WebApiXamarin\XamarinApp\XamarinApp\obj\Debug\netstandard2.0\XamarinApp.csproj.CoreCompileInputs.cache
+C:\Users\Vanessa\Documents\Visual Studio 2019\Web\WebApiXamarin\XamarinApp\XamarinApp\obj\Debug\netstandard2.0\XamlC.stamp

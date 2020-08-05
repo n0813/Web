@@ -1,0 +1,79 @@
+﻿@model IEnumerable<WebCRUD2.Clases.EspecialidadCLS>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Agregar</a>
+
+    <a class="btn btn-dark" asp-action="exportarExcel">Excel</a>
+</p>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.iidespeciadlidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descripcion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.iidespeciadlidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcion)
+            </td>
+            <td>
+
+                @*<a  class="btn btn-primary" asp-action="Edit" asp-route-id="@item.iidespeciadlidad">
+                    Modificar
+                </a>*@
+
+                <a href="/Especialidad/Edit/@item.iidespeciadlidad" class="btn btn-primary">Modificar</a>
+
+                <a onclick="Eliminar(@item.iidespeciadlidad)" class="btn btn-danger">Eliminar</a>
+
+                @*@Html.ActionLink("Edit", "Edit", new {  id=item.iidespeciadlidad }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<form asp-controller="Especialidad" asp-action="Delete" method="post" id="frmEliminar">
+    <input type="hidden" name="id" id="idEspecialidad" />
+</form>
+
+
+<script>
+    function Eliminar(id) {
+        document.getElementById("idEspecialidad").value = id;
+
+        Validar().then((result) => {
+            if (result.value) {
+                alert("SI");
+                //enviar a base de datos
+                var frmEliminar = document.getElementById("frmEliminar");
+                frmEliminar.submit();
+            }
+        })
+
+
+    }
+</script>

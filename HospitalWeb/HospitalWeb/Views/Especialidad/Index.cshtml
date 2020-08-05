@@ -1,0 +1,114 @@
+﻿@model IEnumerable<HospitalWeb.Clases.EspecialidadCLS>
+
+@{
+    ViewData["Title"] = "Index";
+    var filtro = ViewBag.Filtro;
+}
+
+<h1>Especialidades</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Nuevo</a>
+</p>
+
+
+<form asp-controller="Especialidad" asp-action="Index" method="post" class="mb-2"
+      style="display:grid;grid-template-columns:1fr 2fr 1fr">
+    <label>Ingrese nombre Especialidad:</label>
+    <input type="text" class="form form-control" name="nombre" value="@filtro" />
+    @*<input type="submit" value="Enviar" class="btn btn-info" />*@
+
+    <input type="button" value="Enviar" class="btn btn-info" />
+
+</form>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.iidespeciadlidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descripcion)
+            </th>
+            <th>
+                Operaciones
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.iidespeciadlidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcion)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+
+                <a href="/Especialidad/Edit/@item.iidespeciadlidad" class="fa fa-refresh btn btn-primary"></a>
+                 
+                <i class="fa fa-trash-o btn btn-danger" onclick="Eliminar(@item.iidespeciadlidad)"></i>
+
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<form id="frmEliminar" asp-action="Delete" asp-controller="Especialidad" method="post">
+    <input type="hidden" name="id" id="idEspecialidad" />
+</form>
+
+
+<script>
+
+    function Eliminar(id) {
+
+        document.getElementById("idEspecialidad").value = id;
+        //codigo de pop up
+        //alert("SI");
+
+        //Validar()
+
+        Swal.fire({
+            title: "Desea eliminar el registro?",
+            text: "Desea eliminar la informacion en la base de datos",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si!'
+        }).then((result) => {
+            if (result.value) {
+                alert("SI");
+                //enviar a base de datos
+                var frmEliminar = document.getElementById("frmEliminar");
+                frmEliminar.submit();
+
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Cambios guardados exitosamente!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+
+            }
+        })
+
+
+    }
+</script>
+
+
