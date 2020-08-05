@@ -9,6 +9,7 @@ scaffold-DBContext "server=DESKTOP-922605J;database=BDHospital;Integrated Securi
 scaffold-DBContext "server=DESKTOP-922605J;database=BDHospital;Integrated Security=true" Microsoft.EntityFrameworkCore.SqlServer -Output Models -force
 
 //---------------------------------Complementos--------------------------------------------------//
+
 //reportes, nuget para reportes en word, excel y pdf
   epplus
   
