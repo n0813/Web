@@ -1,23 +1,26 @@
 # Web
-Sitios Web y WebApi
 
-//agrega conexion a base de datos
-scaffold-DBContext "server=DESKTOP-922605J;database=BDHospital;Integrated Security=true" Microsoft.EntityFrameworkCore.SqlServer -Output Models
+Sitios Web y WebApi<br>
+
+//agrega conexion a base de datos<br>
+
+scaffold-DBContext "server=DESKTOP-922605J;database=BDHospital;Integrated Security=true" Microsoft.EntityFrameworkCore.SqlServer -Output Models<br>
 
 
-//actualizar base de datos
-scaffold-DBContext "server=DESKTOP-922605J;database=BDHospital;Integrated Security=true" Microsoft.EntityFrameworkCore.SqlServer -Output Models -force
+//actualizar base de datos<br>
 
-//---------------------------------Complementos--------------------------------------------------//
+scaffold-DBContext "server=DESKTOP-922605J;database=BDHospital;Integrated Security=true" Microsoft.EntityFrameworkCore.SqlServer -Output Models -force<br>
 
-//reportes, nuget para reportes en word, excel y pdf
+//---------------------------------Complementos--------------------------------------------------//<br>
+
+//reportes, nuget para reportes en word, excel y pdf<br>
   epplus
   
-//sweet alert 2
-//para pop up 
-https://sweetalert2.github.io/
+//sweet alert 2 <br>
+//para pop up <br>
+https://sweetalert2.github.io/<br>
 
-//Iconos para web
-https://fontawesome.bootstrapcheatsheets.com/
+//Iconos para web<br>
+https://fontawesome.bootstrapcheatsheets.com/<br>
   
-//---------------------------------Login--------------------------------------------------//
+//---------------------------------Login--------------------------------------------------//<br>
